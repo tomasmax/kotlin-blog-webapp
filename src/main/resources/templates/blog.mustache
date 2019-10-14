@@ -1,0 +1,29 @@
+{{> header}}
+
+<h1>{{title}}</h1>
+
+<div class="articles">
+    <div>
+        <form action="/filter" method="post">
+            <select id="filter" name="value">{{#filters}}
+                <option value="{{value}}" {{#selected}}selected{{/selected}}>
+                    {{value}}
+                </option>
+            {{/filters}}</select>
+            <input type="submit" value="Filter">
+        </form>
+    </div>
+
+    {{#articles}}
+        <section>
+            <header class="article-header">
+                <h2 class="article-title"><a href="/article/{{slug}}">{{title}}</a></h2>
+            </header>
+            <div class="article-description">
+                {{content}}
+            </div>
+        </section>
+    {{/articles}}
+</div>
+
+{{> footer}}
